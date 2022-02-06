@@ -27,6 +27,11 @@ const App = {
             console.log(this.usersSelect);
         },
 
+        removeAll() {
+            this.users.unshift(...this.usersSelect);
+            this.usersSelect = [];
+        },
+
         addClassActive() {
             return {
               active: this.isActive = true,

@@ -51,6 +51,8 @@
             </ul>
             <!-- Список выбранных пользователей -->
             <ul class="users-select-list" v-if="activeLink === 2">
+                <!-- Кнопка для очещения всего списка выбранных пользователей -->
+                <button class="allRemove" @click="removeAll" v-if="usersSelect.length !== 0">Очистить</button>
                 <li class="user-select" v-for="(user, index) in usersSelect" v-if="usersSelect.length !== 0">
                     <img :src="user.avatar_url" alt="avatar">
                     {{ user.login }}
