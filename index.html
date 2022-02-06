@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Подключение стилей -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Подключение шрифта -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Title приложения -->
+    <title>Mono Test - Task 3</title>
+</head>
+<!-- Тело приложения -->
+<body>
+    <!-- Оболочка приложения -->
+    <div id="app" class="wrapper">
+        <!-- Header -->
+        <header class="header">
+            <!-- Заголовок приложения -->
+            <h1>Список пользователей</h1>
+            <!-- Input для поиска  -->
+            <input type="text" v-model="searchUser" placeholder="Введите имя пользователя..."><button class="search-button">Искать</button>
+        </header>
+        <!-- Sidebar -->
+        <div class="side-bar">
+            <!-- Пункт Пользователи -->
+            <a 
+            id="users"
+            @click.prevent="activeLink = 1"
+            v-bind:class="{ active: activeLink === 1 }" 
+            href="#">Пользователи</a>
+            <!-- Пункт Выбранные пользователи -->
+            <a 
+            id="selectUsers"
+            @click.prevent="activeLink = 2"
+            :class="{ active: activeLink === 2 }"
+            href="#">Выбранные пользователи</a>
+        </div>
+        <!-- Main -->
+        <main class="main">
+            <!-- Список пользователей -->
+            <ul class="users-list" v-if="activeLink === 1">
+                <li class="user" v-for="(user, index) in users">
+                    <img :src="user.avatar_url" alt="avatar" @click="getInfoUser(index)">
+                    {{ user.login }}
+                    <button class="add-button" @click="addSelectUsers(index)">&#10003;</button>
+                </li>
+            </ul>
+            <!-- Список выбранных пользователей -->
+            <ul class="users-select-list" v-if="activeLink === 2">
+                <li class="user-select" v-for="(user, index) in usersSelect" v-if="usersSelect.length !== 0">
+                    <img :src="user.avatar_url" alt="avatar">
+                    {{ user.login }}
+                    <button class="button-delete" @click="deleteSelectUsers(index)">&#10007;</button>
+                </li>
+                <h2 v-else>Нет выбранных пользователей</h2>
+            </ul>
+        </main>
+        <!-- Footer -->
+        <footer class="footer">
+            <h2>&copy; Budakov Dmitry</h2>
+        </footer>
+    </div>
+
+    <!-- Подключение axios -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!-- Подключение Vue 3 -->
+    <script src="https://unpkg.com/vue@next"></script>
+    <!-- Подключение скриптов -->
+    <script src="js/app.js"></script>
+</body>
+</html>
