@@ -1,3 +1,3 @@
 # Mono-Task-3
 
-Link for view
+Link for view: https://budakovdmitry.github.io/Mono-Task-3/
