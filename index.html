@@ -22,7 +22,7 @@
             <!-- Заголовок приложения -->
             <h1>Список пользователей</h1>
             <!-- Input для поиска  -->
-            <input type="text" v-model="searchUser" placeholder="Введите имя пользователя..."><button class="search-button">Искать</button>
+            <input type="text" placeholder="Введите имя пользователя..."><button class="search-button">Искать</button>
         </header>
         <!-- Sidebar -->
         <div class="side-bar">
@@ -58,7 +58,7 @@
                     {{ user.login }}
                     <button class="button-delete" @click="deleteSelectUsers(index)">&#10007;</button>
                 </li>
-                <h2 v-else>Нет выбранных пользователей</h2>
+                <h2 v-else>Упс... Никого не выбрали ещё</h2>
             </ul>
         </main>
         <!-- Footer -->
